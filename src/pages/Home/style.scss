@@ -1,5 +1,9 @@
 @import "src/colors.scss";
 
+*{
+  scroll-behavior: smooth;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -92,10 +96,18 @@ main {
   margin-top: 64px;
   margin-bottom: 64px;
 }
-.Title {
+#nos-services,
+#notre-equipe {
   font-size: 50px;
   font-family: "Space Grotesk", sans-serif;
   color: $primary;
+  margin: 0;
+  margin-top: 64px;
+}
+#nos-realisations{
+  font-size: 50px;
+  font-family: "Space Grotesk", sans-serif;
+  color: white;
   margin: 0;
   margin-top: 64px;
 }
