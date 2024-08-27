@@ -18,12 +18,12 @@ const EventList = () => {
     .filter(event => !type || event.type === type) 
     .slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE) || []; 
 
+  const pageNumber = Math.ceil((data?.events.filter(event => !type || event.type === type).length || 0) / PER_PAGE);
+
   const changeType = (evtType) => {
     setCurrentPage(1); 
     setType(evtType);
   };
-
-  const pageNumber = Math.ceil((data?.events.filter(event => !type || event.type === type).length || 0) / PER_PAGE);
 
   const typeList = new Set(data?.events.map((event) => event.type));
   
