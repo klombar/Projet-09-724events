@@ -41,6 +41,7 @@
       min-height: 32px;
       margin: 0;
       text-transform: capitalize;
+      cursor: pointer;
     }
   }
   input {
@@ -48,6 +49,7 @@
     height: 16px;
     min-width: 16px;
     margin-right: 16px;
+    cursor: pointer;
   }
   button {
     border: none;
@@ -55,6 +57,7 @@
     height: 32px;
     margin-top: 16px;
     margin-right: 8px;
+    cursor: pointer;
     &.close {
       transform: rotate(180deg);
     }
