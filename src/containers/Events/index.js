@@ -4,7 +4,6 @@ import Select from "../../components/Select";
 import { useData } from "../../contexts/DataContext";
 import Modal from "../Modal";
 import ModalEvent from "../ModalEvent";
-
 import "./style.css";
 
 const PER_PAGE = 9;
@@ -55,8 +54,9 @@ const EventList = () => {
             ))}
           </div>
           <div className="Pagination">
-            {[...Array(pageNumber)].map((_, n) => (
-              <a href="#events" onClick={() => setCurrentPage(n + 1)}>
+            {[...Array(pageNumber)].map((_ , n) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}>
                 {n + 1}
               </a>
             ))}
