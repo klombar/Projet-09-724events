@@ -2,7 +2,7 @@ import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
-
+import ModalEvent from "../../containers/ModalEvent";
 import "./style.scss";
 import EventList from "../../containers/Events";
 import Slider from "../../containers/Slider";
@@ -119,13 +119,18 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        <EventCard
-          imageSrc={last?.cover || " "}
-          title={last?.title || " "}
-          date={new Date(last?.date)}
-          small
-          label="boom"
-        />
+        <Modal Content={last ? <ModalEvent event={last} /> : <div>No event available</div>}>
+                {({ setIsOpened }) => (
+                  <EventCard
+                    onClick={() => setIsOpened(true)}
+                    imageSrc={last?.cover || " "}
+                    title={last?.title || " "}
+                    date={new Date(last?.date)}
+                    label={last?.type || " "}
+                    small
+                  />
+                )}
+              </Modal>
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>

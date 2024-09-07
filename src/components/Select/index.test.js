@@ -5,7 +5,7 @@ describe("When a select is created", () => {
   it("a list of choices is displayed", () => {
     render(<Select selection={["value1", "value2"]} />);
     const selectElement = screen.getByTestId("select-testid");
-    const selectDefault = screen.getByText("Toutes");
+    const selectDefault = screen.getAllByText("Toutes")[0];
     expect(selectElement).toBeInTheDocument();
     expect(selectDefault).toBeInTheDocument();
   });
@@ -73,7 +73,7 @@ describe("When a select is created", () => {
           })
         );
 
-        const choiceAll = screen.getByText("Toutes");
+        const choiceAll = screen.getAllByText("Toutes")[1];
         fireEvent(
           choiceAll,
           new MouseEvent("click", {

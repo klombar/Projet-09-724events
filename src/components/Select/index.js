@@ -2,24 +2,24 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from "react";
 import PropTypes from "prop-types";
-
 import "./style.scss";
 
 const Select = ({
   selection,
+  value, 
   onChange,
   name,
   titleEmpty,
   label,
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(true); 
+
   const changeValue = (newValue) => {
     onChange(newValue);
-    setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);
   };
+
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -31,8 +31,12 @@ const Select = ({
           {!collapsed && (
             <>
               {!titleEmpty && (
-                <li onClick={() =>{ changeValue(null); setCollapsed(!collapsed);}}>
-                  <input defaultChecked={!value} name="selected" type="radio" />{" "}
+                <li onClick={() => changeValue(null)}>
+                  <input
+                    defaultChecked={!value}
+                    name="selected"
+                    type="radio"
+                  />{" "}
                   Toutes
                 </li>
               )}
@@ -83,19 +87,21 @@ const Arrow = () => (
 
 Select.propTypes = {
   selection: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func,
   name: PropTypes.string,
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
+  value : "",
   onChange: () => null,
   titleEmpty: false,
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;
