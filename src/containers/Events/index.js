@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from "uuid";
 import { useState } from "react";
 import EventCard from "../../components/EventCard";
 import Select from "../../components/Select";
@@ -47,7 +48,7 @@ const EventList = () => {
           <div id="events" className="ListContainer">
             {filteredEvents.length > 0 ? (
               filteredEvents.map((event) => (
-                <Modal key={event.id} Content={<ModalEvent event={event} />}>
+                <Modal key={uuidv4()} Content={<ModalEvent event={event} />}>
                   {({ setIsOpened }) => (
                     <EventCard
                       onClick={() => setIsOpened(true)}
@@ -68,7 +69,7 @@ const EventList = () => {
               {[...Array(pageNumber)].map((_, n) => (
                 <a 
                 // eslint-disable-next-line react/no-array-index-key
-                  key={n} 
+                key={uuidv4()}
                   href="#events" 
                   className={currentPage === n + 1 ? "active" : ""}
                   onClick={() => setCurrentPage(n + 1)}

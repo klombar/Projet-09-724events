@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
@@ -41,7 +42,7 @@ const Select = ({
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li key={uuidv4()} onClick={() => changeValue(s)}>
                   <input
                     defaultChecked={value === s}
                     name="selected"
